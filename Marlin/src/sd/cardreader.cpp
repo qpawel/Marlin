@@ -336,8 +336,6 @@ void CardReader::initsd() {
   #ifndef SPI_SPEED
     #define SPI_SPEED SPI_FULL_SPEED
   #endif
-  Serial.printf("SD ss %d\n",SDSS);
-  Serial.printf("SPEED %d %d\n", SPI_SPEED, SPI_HALF_SPEED);
   if (!sd2card.init(SPI_SPEED, SDSS)
     #if defined(LCD_SDSS) && (LCD_SDSS != SDSS)
       && !sd2card.init(SPI_SPEED, LCD_SDSS)
