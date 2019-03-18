@@ -19,10 +19,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-#pragma once
+
+#ifndef WATCHDOG_ESP32_H
+#define WATCHDOG_ESP32_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+esp_err_t esp_task_wdt_reset();
+#ifdef __cplusplus
+}
+#endif
 
 // Initialize watchdog with a 4 second interrupt time
 void watchdog_init();
 
 // Reset watchdog.
-inline void watchdog_reset() { }
+inline void watchdog_reset() {esp_task_wdt_reset();};
+
+#endif // WATCHDOG_ESP32_H
