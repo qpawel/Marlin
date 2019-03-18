@@ -676,7 +676,15 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
       #if ENABLED(SKEW_CORRECTION_GCODE)
         case 852: M852(); break;                                  // M852: Set Skew factors
       #endif
-
+      
+      #if ENABLED(WIFISUPPORT)
+         case 585: GcodeSuite::M585(); break;                                // M585: Set hostname
+         case 586: GcodeSuite::M586(); break;                                // M586: Configure Network protocols
+         case 587: GcodeSuite::M587(); break;                                // M587: Set WiFi STA host network
+         case 588: GcodeSuite::M588(); break;                                // M588: Set WiFi mode
+         case 589: GcodeSuite::M589(); break;                                // M589: Configure access point parameters
+      #endif
+      
       #if ENABLED(ADVANCED_PAUSE_FEATURE)
         case 600: M600(); break;                                  // M600: Pause for Filament Change
         case 603: M603(); break;                                  // M603: Configure Filament Change

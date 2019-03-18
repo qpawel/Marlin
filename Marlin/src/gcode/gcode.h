@@ -781,7 +781,15 @@ private:
   #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)
     static void M540();
   #endif
-
+  
+  #if ENABLED(WIFISUPPORT)
+    static void M585();
+    static void M586();
+    static void M587();
+    static void M588();
+    static void M589();
+  #endif
+  
   #if ENABLED(ADVANCED_PAUSE_FEATURE)
     static void M600();
     static void M603();

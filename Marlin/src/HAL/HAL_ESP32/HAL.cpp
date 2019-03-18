@@ -35,14 +35,7 @@
 #endif
 
 #if ENABLED(WIFISUPPORT)
-  #include <ESPAsyncWebServer.h>
-  #include "wifi.h"
-  #if ENABLED(OTASUPPORT)
-    #include "ota.h"
-  #endif
-  #if ENABLED(WEBSUPPORT)
-    #include "web.h"
-  #endif
+  #include "wificonfig.h"
 #endif
 
 // ------------------------
@@ -88,20 +81,13 @@ void HAL_init_board(void) {
   #endif
 
   #if ENABLED(WIFISUPPORT)
-    wifi_init();
-    #if ENABLED(OTASUPPORT)
-      OTA_init();
-    #endif
-    #if ENABLED(WEBSUPPORT)
-      web_init();
-    #endif
-    server.begin();
+    wifi_config.begin();
   #endif
 }
 
 void HAL_idletask(void) {
-  #if ENABLED(OTASUPPORT)
-    OTA_handle();
+  #if ENABLED(WIFISUPPORT)
+   wifi_config.handle();
   #endif
 }
 
