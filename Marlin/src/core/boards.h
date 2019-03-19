@@ -274,6 +274,7 @@
 // Espressif ESP32 WiFi
 //
 #define BOARD_ESP32            1900
+#define BOARD_MRR_ESPA         1901
 
 //
 // Simulations

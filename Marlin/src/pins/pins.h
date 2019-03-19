@@ -468,7 +468,9 @@
 //
 
 #elif MB(ESP32)
-  #include "pins_ESP32.h"             // ESP32                                      env:esp32
+  #include "pins_ESP32.h"
+#elif MB(MRR_ESPA)
+  #include "pins_MRR_ESPA.h"
 
 //
 // Linux Native Debug board
