@@ -58,6 +58,14 @@
 #define E0_ENABLE_PIN      X_ENABLE_PIN
 //#define E0_CS_PIN          21
 
+
+//
+// Disable I2S stepper stream
+//
+#ifdef I2S_STEPPER_STREAM
+  #undef I2S_STEPPER_STREAM
+#endif
+
 //
 // Temperature Sensors
 //
@@ -71,8 +79,12 @@
 #define FAN_PIN            13
 #define HEATER_BED_PIN      4
 
+//
+// MicroSD card
+//
 #define MOSI_PIN           23
 #define MISO_PIN           19
 #define SCK_PIN            18
 #define SS_PIN              5
 #define SDSS                5
+
