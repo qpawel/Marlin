@@ -108,7 +108,7 @@ class Web_Server {
     static void handleFileList ();
     static void handleUpdate ();
     static void WebUpdateUpload ();
-#ifdef ENABLE_SD_CARD
+#if ENABLED(SDSUPPORT)
     static void handle_direct_SDFileList();
     static void SDFile_direct_upload();
 #endif

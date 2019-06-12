@@ -37,7 +37,7 @@
 #include <WiFi.h>
 #include <FS.h>
 #include <SPIFFS.h>
-#ifdef ENABLE_SD_CARD
+#if ENABLED(SDSUPPORT)
 #include "sd_ESP32.h"
 #endif
 #include <Preferences.h>
@@ -164,7 +164,7 @@ bool Web_Server::begin(){
     //web update
     _webserver->on ("/updatefw", HTTP_ANY, handleUpdate, WebUpdateUpload);
         
-#ifdef ENABLE_SD_CARD    
+#if ENABLED(SDSUPPORT)   
     //Direct SD management
     _webserver->on("/upload", HTTP_ANY, handle_direct_SDFileList,SDFile_direct_upload);
 #endif
@@ -279,7 +279,7 @@ void Web_Server:: handle_not_found()
     String contentType =  getContentType(path);
     String pathWithGz = path + ".gz";
 
-#ifdef ENABLE_SD_CARD
+#if ENABLED(SDSUPPORT)
     if ((path.substring(0,4) == "/SD/")) {
         //remove /SD
         path = path.substring(3);
@@ -582,7 +582,7 @@ bool Web_Server::execute_internal_command (int cmd, String cmd_params, level_aut
             {
             if (!espresponse) return false;
             String resp = "No SD card";
-#ifdef ENABLE_SD_CARD
+#if ENABLED(SDSUPPORT)
             ESP_SD card;
             int8_t state = card.card_status();
             if (state == -1)resp="Busy";
@@ -1281,7 +1281,7 @@ bool Web_Server::execute_internal_command (int cmd, String cmd_params, level_aut
             resp = "FW version:";
             resp += SHORT_BUILD_VERSION;
             resp += " # FW target:marlin-embedded  # FW HW:";
-            #ifdef ENABLE_SD_CARD
+            #if ENABLED(SDSUPPORT)
             resp += "Direct SD";
             #else
             resp += "No SD";
@@ -1904,7 +1904,7 @@ void Web_Server::WebUpdateUpload ()
 }
 
 
-#ifdef ENABLE_SD_CARD
+#if ENABLED(SDSUPPORT)
 
 //direct SD files list//////////////////////////////////////////////////
 void Web_Server::handle_direct_SDFileList()
