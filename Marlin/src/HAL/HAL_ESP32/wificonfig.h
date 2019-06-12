@@ -25,7 +25,6 @@
 #define ENABLE_HTTP
 #define ENABLE_SSDP
 #define ENABLE_CAPTIVE_PORTAL
-#define ENABLE_SD_CARD
 //Authentication flag is now in Configuration_adv.h
 //#define ENABLE_AUTHENTICATION
 #define ENABLE_SERIAL2SOCKET_OUT
