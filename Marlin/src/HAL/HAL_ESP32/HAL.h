@@ -41,6 +41,7 @@
 #include "HAL_timers_ESP32.h"
 
 #include "serial2socket.h"
+#include "FlushableHardwareSerial.h"
 
 // --------------------------------------------------------------------------
 // Defines

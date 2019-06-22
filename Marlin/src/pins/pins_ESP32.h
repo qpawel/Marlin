@@ -81,4 +81,4 @@
 #define FAN_PIN             13
 #define HEATER_BED_PIN       4
 
-#define SDSS			SS_PIN
+#define SDSS			5 //SS_PIN

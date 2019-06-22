@@ -490,7 +490,7 @@ void Web_Server::handle_web_command ()
         uint8_t sindex = 0;
         scmd = get_Splited_Value(cmd,'\n', sindex);
         while ( scmd != "" ){
-        enqueue_and_echo_command(scmd.c_str());
+        GCodeQueue::enqueue_one_now(scmd.c_str());
         sindex++;
         scmd = get_Splited_Value(cmd,'\n', sindex);
         }
@@ -559,7 +559,7 @@ void Web_Server::handle_web_command_silent ()
         scmd = get_Splited_Value(cmd,'\n', sindex);
         String res = "Ok";
         while ( scmd != "" ){
-        enqueue_and_echo_command(scmd.c_str());
+        GCodeQueue::enqueue_one_now(scmd.c_str());
         sindex++;
         scmd = get_Splited_Value(cmd,'\n', sindex);
         }
@@ -1233,7 +1233,9 @@ bool Web_Server::execute_internal_command (int cmd, String cmd_params, level_aut
                             //if not is not a valid [ESPXXX] command ignore it
                         }
                     } else {
-                        if (currentline.length() > 0)enqueue_and_echo_command(currentline.c_str());
+                        if (currentline.length() > 0){
+                            GCodeQueue::enqueue_one_now(currentline.c_str());
+                        }
                         wifi_config.wait (1);
                     }
                 wifi_config.wait (1);
