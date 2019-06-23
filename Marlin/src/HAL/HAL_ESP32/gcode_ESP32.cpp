@@ -68,7 +68,8 @@ const char * getStringFromParam(const char * string, const char * param){
     //be sure string start with space
     String s = string;
     if (s[0]!=' ')s = " " + s;
-    String result = "";
+    static String result;
+    result = "";
     //look for start
     int pos = s.indexOf(sparam);
     if (pos !=-1 && (s.length() > (pos+sparam.length()))){
@@ -89,7 +90,8 @@ const char * getValueFromParam(const char * string, const char * param){
     //be sure string start with space
     String s = string;
     if (s[0]!=' ')s = " " + s;
-    String result = "";
+    static String result;
+    result = "";
     //look for start
     int pos = s.indexOf(sparam);
     if (pos !=-1 && (s.length() > (pos+sparam.length()))){
