@@ -802,7 +802,7 @@ bool Web_Server::execute_internal_command (int cmd, String cmd_params, level_aut
             if (! (styp == "B" || styp == "S" || styp == "A" || styp == "I" || styp == "F") ) {
                 response = false;
             }
-            if (sval.length() == 0) {
+            if ((sval.length() == 0) && !((spos==AP_PWD_ENTRY) || (spos==STA_PWD_ENTRY))){
                 response = false;
             }
 
