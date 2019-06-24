@@ -30,10 +30,6 @@
 
 #include "../../inc/MarlinConfigPre.h"
 
-#if EITHER(EEPROM_SETTINGS, WEBSUPPORT)
-  #include "spiffs.h"
-#endif
-
 #if ENABLED(WIFISUPPORT)
   #include "wificonfig.h"
 #endif
