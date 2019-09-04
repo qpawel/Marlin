@@ -73,16 +73,30 @@ void HAL_init(void) {
 #endif
 }
 
-void HAL_init_board(void) {
-  #if ENABLED(WIFISUPPORT)
-    wifi_config.begin();
-  #endif
+#if ENABLED(WIFISUPPORT)
+static TaskHandle_t WiFiTaskHandle = 0;
+void HAL_WiFitask(void *pvParameters) {
+  while(true) // run continuously
+	{ 		
+        wifi_config.handle();
+        vTaskDelay(1 / portTICK_RATE_MS);  // Yield to other tasks		
+	}  // while(true)
 }
+#endif
 
-void HAL_idletask(void) {
-  #if ENABLED(WIFISUPPORT)
-   wifi_config.handle();
-  #endif
+void HAL_init_board(void) {
+#if ENABLED(WIFISUPPORT)
+    wifi_config.begin();
+    WiFiTaskHandle = 0;
+    xTaskCreatePinnedToCore(HAL_WiFitask,    // task
+                            "WiFiTask", // name for task
+                            8192,   // size of task stack
+                            NULL,   // parameters
+                            1, // priority
+                            &WiFiTaskHandle, 
+                            0 // core
+                            ); 
+#endif
 }
 
 void HAL_clear_reset_source(void) { }
