@@ -490,9 +490,11 @@ void Web_Server::handle_web_command ()
         uint8_t sindex = 0;
         scmd = get_Splited_Value(cmd,'\n', sindex);
         while ( scmd != "" ){
-        GCodeQueue::enqueue_one_now(scmd.c_str());
-        sindex++;
-        scmd = get_Splited_Value(cmd,'\n', sindex);
+            scmd+="\n";
+            Serial2Socket.push(scmd.c_str());
+            //GCodeQueue::enqueue_one_now(scmd.c_str());
+            sindex++;
+            scmd = get_Splited_Value(cmd,'\n', sindex);
         }
         _webserver->send (200, "text/plain", res.c_str());
     }
@@ -558,10 +560,12 @@ void Web_Server::handle_web_command_silent ()
         uint8_t sindex = 0;
         scmd = get_Splited_Value(cmd,'\n', sindex);
         String res = "Ok";
-        while ( scmd != "" ){
-        GCodeQueue::enqueue_one_now(scmd.c_str());
-        sindex++;
-        scmd = get_Splited_Value(cmd,'\n', sindex);
+        while (scmd != "" ){
+            scmd+="\n";
+            Serial2Socket.push(scmd.c_str());
+            //GCodeQueue::enqueue_one_now(scmd.c_str());
+            sindex++;
+            scmd = get_Splited_Value(cmd,'\n', sindex);
         }
         _webserver->send (200, "text/plain", res.c_str());
     }
@@ -1234,7 +1238,9 @@ bool Web_Server::execute_internal_command (int cmd, String cmd_params, level_aut
                         }
                     } else {
                         if (currentline.length() > 0){
-                            GCodeQueue::enqueue_one_now(currentline.c_str());
+                            currentline+="\n";
+                            Serial2Socket.push(currentline.c_str());
+                            //GCodeQueue::enqueue_one_now(currentline.c_str());
                         }
                         wifi_config.wait (1);
                     }
