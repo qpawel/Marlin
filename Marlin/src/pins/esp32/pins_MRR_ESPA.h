@@ -20,21 +20,31 @@
  *
  */
 
+#pragma once
+
 /**
- * Espressif ESP32 (Tensilica Xtensa LX6) pin assignments
+ * MRR ESPA pin assignments
+ * MRR ESPA is a 3D printer control board based on the ESP32 microcontroller.
+ * Supports 4 stepper drivers, heated bed, single hotend.
  */
+
+#ifndef ARDUINO_ARCH_ESP32
+  "Oops! Select an ESP32 board in 'Tools > Board.'"
+#endif
 
 #ifndef BOARD_NAME
   #define BOARD_NAME "MRR ESPA"
 #endif
 
 //
-// I2S (steppers & other output-only pins)
+// Disable I2S stepper stream
 //
-#define I2S_STEPPER_STREAM
-#define I2S_WS              25
-#define I2S_BCK             26
-#define I2S_DATA            27
+#ifdef I2S_STEPPER_STREAM
+  #undef I2S_STEPPER_STREAM
+#endif
+#define I2S_WS              -1
+#define I2S_BCK             -1
+#define I2S_DATA            -1
 
 //
 // Limit Switches
@@ -87,4 +97,3 @@
 #define SCK_PIN            18
 #define SS_PIN              5
 #define SDSS                5
-
