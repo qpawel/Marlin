@@ -13,7 +13,8 @@ Please test this firmware and let us know if it misbehaves in any way. Volunteer
 ## Marlin 2.0 Bugfix Branch with ESP3D WEBUI support
 <img src="https://github.com/luc-github/ESP3D/raw/2.1/images/ESP3D.png" width="100px">
 
-<H3>Waiting for answer for integration or rejection/H3>
+<H3>Waiting for answer for integration or rejection</H3>
+
 Check: https://github.com/MarlinFirmware/Marlin/issues/14390       
 
 * [What is ported ?](https://github.com/luc-github/Marlin/issues/10)
