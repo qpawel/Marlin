@@ -11,6 +11,14 @@ Additional documentation can be found at the [Marlin Home Page](http://marlinfw.
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
 ## Marlin 2.0 Bugfix Branch with ESP3D WEBUI support
+<img src="https://github.com/luc-github/ESP3D/raw/2.1/images/ESP3D.png" width="100px">
+
+<H3>Waiting for answer for integration or rejection/H3>
+Check: https://github.com/MarlinFirmware/Marlin/issues/14390       
+
+* [What is ported ?](https://github.com/luc-github/Marlin/issues/10)
+* [What is missing ?](https://github.com/luc-github/Marlin/issues/2)
+
 
 __Not for production use. Use with caution!__
 
