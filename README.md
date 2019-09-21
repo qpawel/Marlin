@@ -20,7 +20,11 @@ Check: https://github.com/MarlinFirmware/Marlin/issues/14390
 * [What is ported ?](https://github.com/luc-github/Marlin/issues/10)
 * [What is missing ?](https://github.com/luc-github/Marlin/issues/2)
 
+Available boards :   
+https://www.kickstarter.com/projects/maplerainresearch/mrr-espa
 
+https://github.com/simon-jouet/ESP32Controller/tree/r2
+ 
 __Not for production use. Use with caution!__
 
 Marlin 2.0 takes this popular RepRap firmware to the next level by adding support for much faster 32-bit and ARM-based boards while improving support for 8-bit AVR boards. Read about Marlin's decision to use a "Hardware Abstraction Layer" below.
